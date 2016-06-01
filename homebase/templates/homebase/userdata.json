@@ -1,0 +1,16 @@
+{
+  "user":{
+    "name":"{{user.name}}",
+    "username":"{{user.email}}",
+    "profile_pic":"{{user.pic_url}}",
+    "course_cache":[
+      {% for course in user.course_set.all %}
+      {
+        "course_name":"{{course.title}}",
+        "section":"{{course.section}}",
+        "id":"{{course.id}}"
+      }
+      {% endfor %}
+    ]
+  }
+}

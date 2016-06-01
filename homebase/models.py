@@ -1,10 +1,23 @@
 from django.db import models
+from django.core.validators import EmailValidator
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+
 
 # Create your models here.
 
 
+@receiver(pre_save)
+def pre_save_handler(sender, instance, *args, **kwargs):
+    instance.full_clean()
+
+
 class User(models.Model):
-    username = models.EmailField()
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200,
+                              primary_key=True,
+                              unique=True,
+                              validators=[EmailValidator])
 
     # SHA1 always 160 bits long = 20 bytes
     password_sha1 = models.BinaryField(max_length=20)
