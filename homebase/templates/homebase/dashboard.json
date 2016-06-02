@@ -1,0 +1,20 @@
+{
+  "assignments": [
+    {% for assignment in assignments %}
+    {
+      "id": "{{assignment.1.id}}",
+      "parent_id":
+      {% if assignment.1.parent_id != None %}
+        "{{assignment.1.parent_id.id}}"
+      {% else %}
+        "-1"
+      {% endif %},
+      "title": "{{assignment.1.title}}",
+      "description": "{{assignment.1.description}}",
+      "course": "{{assignment.1.assoc_course.title}}",
+      "due_date": "{{assignment.0}}"
+    }
+    {% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}

@@ -4,12 +4,14 @@
     "username":"{{user.email}}",
     "profile_pic":"{{user.pic_url}}",
     "course_cache":[
-      {% for course in user.course_set.all %}
+      {% for course in course_cache %}
       {
         "course_name":"{{course.title}}",
         "section":"{{course.section}}",
         "id":"{{course.id}}"
       }
+      {% if not forloop.last %},{% endif %}
+
       {% endfor %}
     ]
   }

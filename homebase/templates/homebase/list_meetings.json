@@ -1,0 +1,14 @@
+{
+  "meetings": [
+    {% for meeting in meetings %}
+    {
+        "id": "{{meeting.2.id}}",
+        "start_time": "{{meeting.0}}",
+        "end_time": "{{meeting.1}}",
+        "location": "{{meeting.2.location}}",
+        "recurrent": "{{meeting.2.recurs}}"
+    }
+    {% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}

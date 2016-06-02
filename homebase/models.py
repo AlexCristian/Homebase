@@ -36,6 +36,12 @@ class Assignment(models.Model):
     description = models.TextField()
     due_date = models.DateTimeField()
     create_date = models.DateTimeField(auto_now=True)
+    parent_id = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
 
     PAPER = "PP"
     DISCUSSION_POST = "DP"

@@ -1,0 +1,14 @@
+[
+  {% for subtask in subtasks %}
+  {
+    "title": "{{subtask.2.title}}",
+    "description": "{{subtask.2.description}}",
+    "due_date": "{{subtask.0}}",
+    "created_at": "{{subtask.1}}",
+    "type": "{{subtask.2.type}}",
+    "course": "{{subtask.2.assoc_course.title}}",
+    "course_id": "{{subtask.2.assoc_course.id}}"
+  }
+  {% if not forloop.last %},{% endif %}
+  {% endfor %}
+]
